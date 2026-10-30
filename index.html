@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tareas - Kitchen & Service Staff</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- CABECERA PRINCIPAL -->
+    <header>
+        <h1>Restaurante "El Sabor" - Tareas del Personal</h1>
+        <p>Panel de apoyo y organización para el equipo de trabajo.</p>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main>
+
+        <!-- MENÚ LATERAL IZQUIERDO -->
+        <nav class="sidebar-menu">
+            <div class="menu-title">Menú de Tareas</div>
+            <ul>
+                <li><a href="#" onclick="filterByMenu('all')"> Todas las tareas</a></li>
+                <li><a href="#" onclick="filterByMenu('pending')">Pendientes</a></li>
+                <li><a href="#" onclick="filterByMenu('completed')">Completadas</a></li>
+                <li><a href="#">Calendario</a></li>
+                <li><a href="#">Estadísticas</a></li>
+                <li><a href="#">Ajustes</a></li>
+            </ul>
+
+            <!-- CUADRO DEL REFRÁN -->
+            <div class="quote-container">
+                <p><em>"Un buen equipo en la cocina y en el salón es la receta secreta del éxito."</em></p>
+            </div>
+        </nav>
+
+        <!-- CONTENIDO DE LA DERECHA -->
+        <div class="content-wrapper">
+            
+            <!-- CONTENEDOR 1: BLOQUE DE FILTRAR TAREAS Y RESUMEN -->
+            <div class="card-container">
+                <fieldset class="custom-fieldset">
+                    <legend>Resumen y Filtros de Operación</legend>
+                    
+                    <div class="metrics-wrapper">
+                        <div class="metric-box">
+                            <span>Total</span>
+                            <div id="total-tasks">0</div>
+                        </div>
+
+                        <div class="metric-box">
+                            <span>Completadas</span>
+                            <div id="completed-tasks">0</div>
+                        </div>
+
+                        <div class="metric-box">
+                            <span>Atrasadas</span>
+                            <div>0</div>
+                        </div>
+
+                        <div class="metric-box">
+                            <span>Por hacer</span>
+                            <div id="pending-tasks">0</div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-select"><strong>Filtrar vista de tareas:</strong></label>
+                        <select id="filter-select" onchange="applyFilter()">
+                            <option value="all">Todas</option>
+                            <option value="pending">Por hacer</option>
+                            <option value="completed">Completadas</option>
+                            <option value="overdue">Atrasadas</option>
+                        </select>
+                    </div>
+                </fieldset>
+            </div>
+
+            <!-- CONTENEDOR 2: BLOQUE PARA AGREGAR NUEVAS TAREAS -->
+            <div class="card-container">
+                <fieldset class="custom-fieldset">
+                    <legend>Asignar / Agregar Nueva Tarea</legend>
+                    <form id="add-task-form" onsubmit="addNewTask(event)">
+                        
+                        <div class="input-group">
+                            <label for="task-title">Tareas que se necesita hacer:</label>
+                            <input type="text" id="task-title" required placeholder="Escribe la tarea...">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="task-section">Sección:</label>
+                            <select id="task-section">
+                                <option value="Trabajo">Trabajo</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Estudios">Estudios</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="task-difficulty">Prioridad / Dificultad:</label>
+                            <select id="task-difficulty">
+                                <option value="facil">facil</option>
+                                <option value="meda">meda</option>
+                                <option value="didficl">didficl</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="task-date">Fecha:</label>
+                            <input type="date" id="task-date" required>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="submit">agregar tarea ya establecida</button>
+                        </div>
+
+                    </form>
+                </fieldset>
+            </div>
+
+            <!-- CONTENEDOR 3: LISTA ÚNICA DE TAREAS -->
+            <div class="card-container">
+                <div class="task-section-wrapper">
+                    <h2>Lista de Tareas</h2>
+                    <ul id="list-tasks" class="modern-task-list"></ul>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- CONTENEDOR DE DERECHOS DE AUTOR (FOOTER) -->
+    <footer class="footer-container">
+        <p>&copy; 2026 Mis tareas del Día. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="JavaScript.js"></script>
+</body>
+</html>
